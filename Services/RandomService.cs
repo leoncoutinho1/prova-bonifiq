@@ -9,7 +9,8 @@
 		}
 		public int GetRandom()
 		{
-			return new Random(seed).Next(100);
+			seed = Guid.NewGuid().GetHashCode();
+            return new Random(seed).Next(100);
 		}
 
 	}
