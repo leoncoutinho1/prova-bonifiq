@@ -1,23 +1,21 @@
-﻿using ProvaPub.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Internal;
+using ProvaPub.Helpers;
+using ProvaPub.Models;
 
 namespace ProvaPub.Services
 {
 	public class OrderService
 	{
+		DbContext _ctx;
+		public OrderService(DbContext ctx) 
+		{
+			_ctx = ctx;
+		}
 		public async Task<Order> PayOrder(string paymentMethod, decimal paymentValue, int customerId)
 		{
-			if (paymentMethod == "pix")
-			{
-				//Faz pagamento...
-			}
-			else if (paymentMethod == "creditcard")
-			{
-				//Faz pagamento...
-			}
-			else if (paymentMethod == "paypal")
-			{
-				//Faz pagamento...
-			}
+			var payment = PaymentMethodFactory.create(paymentMethod);
+			paymentValue = payment.CalculateValue(paymentValue);
 
 			return await Task.FromResult( new Order()
 			{
