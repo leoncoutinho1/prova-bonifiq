@@ -9,6 +9,10 @@ namespace ProvaPub.Repository
 
 	public class TestDbContext : DbContext
 	{
+		public TestDbContext()
+		{
+
+		}
 		public TestDbContext(DbContextOptions<TestDbContext> options) : base(options)
 		{
 		}
@@ -48,8 +52,8 @@ namespace ProvaPub.Repository
 			return result.ToArray();
 		}
 
-		public DbSet<Customer> Customers{ get; set; }
-		public DbSet<Product> Products{ get; set; }
-		public DbSet<Order> Orders { get; set; }
+		public virtual DbSet<Customer> Customers{ get; set; }
+		public virtual DbSet<Product> Products{ get; set; }
+		public virtual DbSet<Order> Orders { get; set; }
 	}
 }
