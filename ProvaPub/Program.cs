@@ -15,6 +15,7 @@ builder.Services.AddSingleton<RandomService>();
 builder.Services.AddDbContext<TestDbContext>(options =>
 	options.UseSqlServer(builder.Configuration.GetConnectionString("ctx")));
 var app = builder.Build();
+builder.Services.AddSingleton<OrderService>();
 builder.Services.AddSingleton<ProductService>();
 builder.Services.AddSingleton<CustomerService>();
 // Configure the HTTP request pipeline.

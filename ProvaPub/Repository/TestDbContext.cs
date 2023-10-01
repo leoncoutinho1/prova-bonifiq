@@ -9,7 +9,11 @@ namespace ProvaPub.Repository
 
 	public class TestDbContext : DbContext
 	{
-		public TestDbContext()
+        public TestDbContext()
+        {
+
+        }
+        public TestDbContext(Func<object, object> value)
 		{
 
 		}
