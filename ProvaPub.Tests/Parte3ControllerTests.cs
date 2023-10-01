@@ -10,7 +10,6 @@ namespace ProvaPub.Tests
 {
     public class Parte3ControllerTests
     {
-        private Mock<TestDbContext> _mockDbContext;
         private OrderService _orderService;
 
         public Parte3ControllerTests()
@@ -29,7 +28,6 @@ namespace ProvaPub.Tests
         {
             var parte3Controller = new Parte3Controller(_orderService);
             
-            // valor 150 - pix tem 8% de desconto - total = 138
             Assert.Equal(expectedValue, (await _orderService.PayOrder(paymentMethod, 150, 1)).Value);
         }
     }

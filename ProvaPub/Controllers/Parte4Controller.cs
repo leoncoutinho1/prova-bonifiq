@@ -27,13 +27,10 @@ namespace ProvaPub.Controllers
             _customerService = customerService;
         }
 
-        public OrderService OrderService { get; }
-        public CustomerService CustomerService { get; }
-
         [HttpGet("CanPurchase")]
 		public async Task<bool> CanPurchase(int customerId, decimal purchaseValue)
 		{
 			return await _customerService.CanPurchase(customerId, purchaseValue);
 		}
-	}
+    }
 }
